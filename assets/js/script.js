@@ -7,10 +7,11 @@ function loadSearchHistory(){
     searchHistory = JSON.parse(localStorage.getItem("cityList"));
     console.log(JSON.stringify(searchHistory));
     if(searchHistory != null){
+        $("#city-list").empty();
         for(let i=0; i < searchHistory.length; i++){
             var btnEl = $('<button>');
             btnEl.text(searchHistory[i]);
-            $('#city-list').append(btnEl);
+            $('#city-list').prepend(btnEl);
             btnEl.on('click', handleSearchEvent);
         }
     }
@@ -50,7 +51,7 @@ function getCityName(cityName){
 
 function getWeather(cityLat, cityLon){
     //alert('inside of waether function:' + cityLat +"," + cityLon);
-    var weatherRequestUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + cityLat + "&lon=" + cityLon +"&units=metric&appid=" + apiKey;
+    var weatherRequestUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + cityLat + "&lon=" + cityLon +"&exclude=minutely,hourly&units=metric&appid=" + apiKey;
     
     // step 2: get weather data for the given lat and lon of the city
     
@@ -59,13 +60,12 @@ function getWeather(cityLat, cityLon){
         return response.json();
     })
     .then(function (data) {
+        
     console.log(data);
     
     });
 }
-
-$("#form-submit").click(function (event) {
-    event.preventDefault();
+function searchButton() {
     var cityName = $("input").val().trim();
     getCityName(cityName);
     
@@ -79,6 +79,18 @@ $("#form-submit").click(function (event) {
         searchHistory.push(cityName);
         localStorage.setItem("cityList", JSON.stringify(searchHistory));
     }
+    loadSearchHistory();
+
+}
+  //submit event for when the users enter the city search term
+  $("#city-form").submit(function (event) {
+    event.preventDefault();
+    searchButton();
+})
+
+$("#form-submit").click(function (event) {
+    event.preventDefault();
+   searchButton();
 });
 
 function displayCityData(cityData){
@@ -92,6 +104,12 @@ function displayCityData(cityData){
     $('#humidity').text('Humidity: ' + (cityData.main.humidity) + ' %');
 
     $('#wind').text('Wind: ' + (cityData.wind.speed) + ' MPH');
+}
+
+function displayWeatherData(weatherData) {
+    for(i = 0; i < weatherData.list.length; i++){
+      var weatherCard = $('<div>'); 
+    }
 }
 
 loadSearchHistory();
