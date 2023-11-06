@@ -1,0 +1,43 @@
+{
+    "coord": {
+        "lon": -1.5122,
+        "lat": 52.4066
+    },
+    "weather": [
+        {
+            "id": 801,
+            "main": "Clouds",
+            "description": "few clouds",
+            "icon": "02n"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 9.39,
+        "feels_like": 8.05,
+        "temp_min": 8.66,
+        "temp_max": 10.32,
+        "pressure": 986,
+        "humidity": 89
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 2.57,
+        "deg": 240
+    },
+    "clouds": {
+        "all": 20
+    },
+    "dt": 1699204135,
+    "sys": {
+        "type": 2,
+        "id": 2039874,
+        "country": "GB",
+        "sunrise": 1699168111,
+        "sunset": 1699201842
+    },
+    "timezone": 0,
+    "id": 2652221,
+    "name": "Coventry",
+    "cod": 200
+}
