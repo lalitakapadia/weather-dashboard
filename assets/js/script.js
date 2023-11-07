@@ -61,7 +61,7 @@ function getWeather(cityLat, cityLon){
     })
     .then(function (data) {
         
-    console.log(data);
+    displayDailyWeather(data);
     
     });
 }
@@ -106,10 +106,27 @@ function displayCityData(cityData){
     $('#wind').text('Wind: ' + (cityData.wind.speed) + ' MPH');
 }
 
-function displayWeatherData(weatherData) {
+function displayDailyWeather(weatherData) {
+    $('#five-day').attr('style', 'diaplay: visible');
+    $('.card-deck').empty();
     for(i = 0; i < weatherData.list.length; i++){
-      var weatherCard = $('<div>'); 
+      var weatherCard = $("<div class='card text-white bg-primary p-2'>");
+      var tempP = $('<p>');
+      var humP = $('<p>');
+      var imgIcon = $('<img>');
+      var dateH6 = $('<h6>');
+
+      tempP.text('Temp:' + (weatherData.list[i].main.temp) + '°C');
+      humP.text('Humidity:' + (weatherData.list[i].main.humidity) + '%');
+      imgIcon.attr('src',"https://openweathermap.org/img/wn/" + weatherData.list[i].weather[0].icon + '@2x.png');
+      dateH6.text(dayjs.unix(weatherData.list[i].dt).format('DD/MM/YYYY'));
+
+      weatherCard.append(dateH6);
+      weatherCard.append(tempP);
+      weatherCard.append(humP);
+      weatherCard.append(imgIcon);
+      $(".card-deck").append(weatherCard);
     }
 }
-
+ 
 loadSearchHistory();
