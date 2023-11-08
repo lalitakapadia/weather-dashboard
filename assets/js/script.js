@@ -68,11 +68,10 @@ function getCityName(cityName){
 }
   //function that uses the city user input to make an API call
 function getWeather(cityLat, cityLon){
-    //alert('inside of waether function:' + cityLat +"," + cityLon);
-    var weatherRequestUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + cityLat + "&lon=" + cityLon +"&exclude=minutely,hourly&units=metric&appid=" + apiKey;
+     // get weather data for the given lat and lon of the city
+     var weatherRequestUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + cityLat + "&lon=" + cityLon +"&exclude=minutely,hourly&units=metric&appid=" + apiKey;
     
-    // step 2: get weather data for the given lat and lon of the city
-    
+   //fetch the daily weather data from the given url    
     fetch(weatherRequestUrl)
     .then(function (response) {
         return response.json();
@@ -82,7 +81,8 @@ function getWeather(cityLat, cityLon){
     displayDailyWeather(data);
     
     });
-}
+} 
+// function for city name search
 function searchButton() {
     var cityName = $("input").val().trim();
     getCityName(cityName);
