@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/css/style.css">
+   
     <title>Weather Dashboard</title>
 </head>
 <body>
@@ -18,13 +18,13 @@
     <div class="container-fluid">
         <div class="row mt-2">
             <!-- Column for the sidebar -->
-            <aside class="col-lg-2">
-                <div class="card bg-light p-2 mb-2">
+            <aside class="col-lg-3">
+                <div class="card bg-light p-3 mb-2">
                     <!-- Search form -->
                     <h4>Enter a City Name:</h4>
                     <form class="form-inline" id="city-form">
-                        <input class="form-control sm-2" id="city-input" type="search" aria-label="Search">
-                        <button type="button" class="btn btn-primary" type="submit" id="form-submit"><i
+                        <input class="form-control sm-3" id="city-input" type="search" aria-label="Search">
+                        <button type="button" class="btn btn-primary ml-3 " type="submit" id="form-submit"><i
                                 class="fas fa-search"></i></button>
                     </form>
              <!-- New search buttons created for each city searched will be added to the list -->
@@ -34,9 +34,11 @@
                  <!-- <div id="city-list"></div> -->
             </aside>
              <!-- Second column to hold the current and 5-day forecast -->
-             <div class="col-lg-10">
+             <div class="col-lg-9">
+               <!-- Placeholders for the current weather data. This will not display until the user 
+                searches for the first city -->
                 <section class="card p-2" id="current" style="display:none;">
-                    <h1 id="city"></h1>
+                    <h1 id="city"></h1> 
                     <h5 id="date"></h5>
                     <p id="temp"></p>
                     <p id="humidity"></p>
@@ -52,13 +54,6 @@
             </div>
         </div>
     </div>
-                <!-- <div class ="row">
-                    <div class="col-12">
-                        <h3>5-Day Forecast</h3>
-                    </div>
-                  
-                </div> -->
-             
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script
